@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "vyXJgSoLvguKXhIbbU18Lol0wH+SeoBWfonXpFJWJKVkd9yanZYgKsT5XO8vGeH8D2E6tVisW0/8M+NVsc6kpQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\dexte\\Documents\\GitHub\\Electronic-Parts-Inventory-Management-System\\EPIMS-API\\EPIMS-API\\EPIMS-API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dexte\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\dexte\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\dexte\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\dexte\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\dexte\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\dexte\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}

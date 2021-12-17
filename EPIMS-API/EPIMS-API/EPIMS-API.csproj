@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>EPIMS_API</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain\Model\Request\" />
+    <Folder Include="Domain\Model\Resource\" />
+    <Folder Include="Domain\Model\Response\" />
+    <Folder Include="Domain\Service\" />
+    <Folder Include="Domain\Repository\" />
+    <Folder Include="Domain\Data\" />
+    <Folder Include="Infra\Repository\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
+</Project>
