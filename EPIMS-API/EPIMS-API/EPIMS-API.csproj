@@ -6,16 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Domain\Model\Request\" />
-    <Folder Include="Domain\Model\Resource\" />
-    <Folder Include="Domain\Model\Response\" />
     <Folder Include="Domain\Service\" />
     <Folder Include="Domain\Repository\" />
-    <Folder Include="Domain\Data\" />
     <Folder Include="Infra\Repository\" />
     <Folder Include="Utils\" />
   </ItemGroup>

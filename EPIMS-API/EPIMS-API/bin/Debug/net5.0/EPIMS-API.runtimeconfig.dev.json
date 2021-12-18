@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\dexte\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\dexte\\.nuget\\packages"
+    ]
+  }
+}

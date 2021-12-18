@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EPIMS_API.Domain.Model.Resource;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace EPIMS_API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-
+     
 
     }
 }
