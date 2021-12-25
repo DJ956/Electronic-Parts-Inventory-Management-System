@@ -16,5 +16,11 @@ namespace EPIMS_API.Domain.Model.Response
         /// メッセージ
         /// </summary>
         public string Message { get; set; }
+
+        public BaseResponse()
+        {
+            ReturnCode = 0;
+            Message = "";
+        }
     }
 }

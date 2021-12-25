@@ -11,16 +11,25 @@ namespace EPIMS_API.Domain.Model.Resource
     /// </summary>
     public class ProductModel
     {
-
         private ProductData data;
-
-        public ProductData ProductData { get; private set; }
 
         public ProductModel(ProductData data)
         {
             this.data = data;
         }
 
+        public int ProductNo { get { return this.data.ProductNo; } }
 
+        public string ProductName { get { return data.ProductName; } }
+
+        public string ModelName { get { return data.ModelName; } }
+
+        public string ShopCode { get { return data.ShopCode; } }
+
+        public string Maker { get { return data.Maker; } }
+
+        public int CategoryNo { get { return data.Category.CategoryNo; } }
+
+        public string CategoryName { get { return data.Category.CategoryName; } }
     }
 }

@@ -1,4 +1,6 @@
 using EPIMS_API.Domain.Context;
+using EPIMS_API.Domain.Repository;
+using EPIMS_API.Infra.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,12 +30,15 @@ namespace EPIMS_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //DI
+            services.AddScoped<ICategoryRepository, CategoryImplRepository>();
+            services.AddScoped<IProductRepository, ProductImplRepository>();
 
             //DBê⁄ë±ï∂éöóÒê›íË
-            services.AddDbContext<EPIMSContext>( options =>
-            {
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
-            });
+            services.AddDbContext<EPIMSContext>(options =>
+           {
+               options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+           });
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 

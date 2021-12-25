@@ -35,3 +35,5 @@ C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\EPI
 C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\EPIMS-API\EPIMS-API\obj\Debug\net5.0\EPIMS-API.pdb
 C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\EPIMS-API\EPIMS-API\obj\Debug\net5.0\EPIMS-API.genruntimeconfig.cache
 C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\EPIMS-API\EPIMS-API\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\EPIMS-API\EPIMS-API\bin\Debug\net5.0\Humanizer.dll
+C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\EPIMS-API\EPIMS-API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

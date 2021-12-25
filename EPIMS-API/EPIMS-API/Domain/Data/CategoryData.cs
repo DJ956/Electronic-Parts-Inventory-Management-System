@@ -10,7 +10,7 @@ namespace EPIMS_API.Domain.Data
     /// <summary>
     /// カテゴリー
     /// </summary>
-    public class CategoryDate
+    public class CategoryData
     {
 
         /// <summary>

@@ -1,4 +1,5 @@
 using EPIMS_API.Domain.Context;
+using EPIMS_API.Infra;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,14 +30,15 @@ namespace EPIMS_API
 
         private static void CreateDbIfNotExists(IHost host)
         {
-            using(var scope = host.Services.CreateScope())
+            using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
                     var context = services.GetRequiredService<EPIMSContext>();
-                    context.Database.EnsureCreated();
-                }catch(Exception ex)
+                    DBInitializer.Initialize(context);
+                }
+                catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "failed creating db");

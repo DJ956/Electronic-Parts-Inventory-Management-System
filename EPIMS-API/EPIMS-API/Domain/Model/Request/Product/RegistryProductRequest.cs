@@ -1,37 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EPIMS_API.Domain.Data
+namespace EPIMS_API.Domain.Model.Request.Product
 {
     /// <summary>
-    /// 製品
+    /// 製品登録リクエスト
     /// </summary>
-    public class ProductData
+    public class RegistryProductRequest
     {
-
-        /// <summary>
-        /// 製品番号
-        /// </summary>
-        [Key]
-        [NotNull]
-        public int ProductNo { get; set; }
 
         /// <summary>
         /// 製品名
         /// </summary>
-        [NotNull]
+        [Required]
         [MaxLength(200)]
         public string ProductName { get; set; }
 
         /// <summary>
         /// 型番
         /// </summary>
-        [NotNull]
+        [Required]
         [MaxLength(50)]
         public string ModelName { get; set; }
 
@@ -48,16 +39,9 @@ namespace EPIMS_API.Domain.Data
         public string Maker { get; set; }
 
         /// <summary>
-        /// カテゴリー外部キー
+        /// カテゴリー番号
         /// </summary>
-        [ForeignKey("Category")]
-        public int CategoryFk { get; set; }
-
-        /// <summary>
-        /// カテゴリー
-        /// </summary>
-        [NotNull]
-        public CategoryData Category;
-
+        [Required]
+        public int CategoryNo { get; set; }
     }
 }
