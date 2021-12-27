@@ -40,9 +40,21 @@ namespace EPIMS_API
                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
            });
 
+            //CORS
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+               {
+                   builder.WithOrigins("http://localhost:8100");
+               });
+            });
+
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EPIMS_API", Version = "v1" });
@@ -60,8 +72,10 @@ namespace EPIMS_API
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
+
+            //CORS
+            app.UseCors();
 
             app.UseAuthorization();
 
