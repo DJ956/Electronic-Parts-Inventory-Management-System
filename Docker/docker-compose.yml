@@ -15,7 +15,6 @@ services:
     volumes:
       - postgres:/var/lib/postgres/data
       - ./db:/docker-entrypoint-initdb.d
-    
 
   pgadmin:
     image: dpage/pgadmin4
@@ -31,5 +30,5 @@ services:
       - postgres
 
 volumes:
-  postgres:
-  pgadmin:
+  postgres: null
+  pgadmin: null

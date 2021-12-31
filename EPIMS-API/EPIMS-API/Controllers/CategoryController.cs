@@ -32,7 +32,7 @@ namespace EPIMS_API.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpGet("all")]
-        public ActionResult<IEnumerable<CategoryData>> GetAllCategory()
+        public ActionResult<GetAllCategoryResponse> GetAllCategory()
         {
             var service = new CategoryService(this.categoryRepository);
             return Ok(service.GetAllCategory());

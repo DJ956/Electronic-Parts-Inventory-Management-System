@@ -21,7 +21,7 @@ namespace EPIMS_API.Domain.Service.Category
         /// 全てのカテゴリーを取得する
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<CategoryData> GetAllCategory()
+        public GetAllCategoryResponse GetAllCategory()
         {
             return this.repository.GetAllCategory();
         }

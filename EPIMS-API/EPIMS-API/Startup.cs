@@ -54,6 +54,7 @@ namespace EPIMS_API
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                options.JsonSerializerOptions.WriteIndented = true;
             });
             services.AddSwaggerGen(c =>
             {

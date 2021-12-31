@@ -18,9 +18,11 @@ namespace EPIMS_API.Infra.Repository
             this.context = context;
         }
 
-        public IEnumerable<CategoryData> GetAllCategory()
+        public GetAllCategoryResponse GetAllCategory()
         {
-            return this.context.CategoryDatas;
+            var response = new GetAllCategoryResponse();
+            response.CategoryDatas = this.context.CategoryDatas.ToList();
+            return response;
         }
 
         public GetCategoryResponse GetCategory(int categoryNo)

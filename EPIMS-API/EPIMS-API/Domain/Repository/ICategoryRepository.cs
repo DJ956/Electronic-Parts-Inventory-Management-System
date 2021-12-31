@@ -9,7 +9,7 @@ namespace EPIMS_API.Domain.Repository
 {
     public interface ICategoryRepository
     {
-        IEnumerable<CategoryData> GetAllCategory();
+        GetAllCategoryResponse GetAllCategory();
         GetCategoryResponse GetCategory(int categoryNo);
     }
 }
