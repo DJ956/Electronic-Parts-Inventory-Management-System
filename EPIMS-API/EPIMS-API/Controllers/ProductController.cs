@@ -44,7 +44,7 @@ namespace EPIMS_API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("all")]
-        public ActionResult<GetAllProductResponse> GetAllProduct()
+        public ActionResult<GetProductListResponse> GetAllProduct()
         {
             var service = new ProductService(this.productRepository);
             return Ok(service.GetAllProduct());

@@ -24,10 +24,17 @@ namespace EPIMS_API.Infra.Repository
         /// 全ての製品を取得する
         /// </summary>
         /// <returns></returns>
-        public GetAllProductResponse GetAllProduct()
+        public GetProductListResponse GetAllProduct()
         {
-            GetAllProductResponse response = new GetAllProductResponse();
-            response.ProductDatas = this.context.ProductDatas;
+            GetProductListResponse response = new GetProductListResponse();
+            this.context.ProductDatas.ToList().ForEach(p =>
+            {
+                var category = this.context.CategoryDatas.Where(c => c.CategoryNo == p.CategoryNo).First();
+                p.CategoryData = category;
+                var model = new ProductModel(p);
+                response.ProductModelList.Add(model);
+            });
+
             return response;
         }
 
