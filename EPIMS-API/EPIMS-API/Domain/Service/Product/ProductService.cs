@@ -31,7 +31,7 @@ namespace EPIMS_API.Domain.Service.Product
         /// 製品をすべて取得する
         /// </summary>
         /// <returns></returns>
-        public GetAllProductResponse GetAllProduct()
+        public GetProductListResponse GetAllProduct()
         {
             return this.repository.GetAllProduct();
         }
