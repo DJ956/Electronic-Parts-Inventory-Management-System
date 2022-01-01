@@ -45,5 +45,15 @@ namespace EPIMS_API.Domain.Service.Product
         {
             return this.repository.GetProduct(productNo);
         }
+
+        /// <summary>
+        /// カテゴリ番号と一致する製品を取得する
+        /// </summary>
+        /// <param name="categoryNo">カテゴリ番号</param>
+        /// <returns></returns>
+        public GetProductListResponse GetProductListByCategory(int categoryNo)
+        {
+            return this.repository.GetProductListByCategory(categoryNo);
+        }
     }
 }

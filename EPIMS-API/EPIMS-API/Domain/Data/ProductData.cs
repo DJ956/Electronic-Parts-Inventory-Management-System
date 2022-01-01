@@ -48,16 +48,15 @@ namespace EPIMS_API.Domain.Data
         public string Maker { get; set; }
 
         /// <summary>
-        /// カテゴリー外部キー
+        /// カテゴリ番号
         /// </summary>
-        [ForeignKey("Category")]
-        public int CategoryFk { get; set; }
+        public int CategoryNo { get; set; }
 
         /// <summary>
         /// カテゴリー
-        /// </summary>
-        [NotNull]
-        public CategoryData Category;
+        /// </summary> 
+        [ForeignKey("CategoryNo")]
+        public CategoryData CategoryData { get; set; }
 
     }
 }

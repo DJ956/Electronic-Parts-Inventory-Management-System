@@ -42,7 +42,7 @@ namespace EPIMS_API.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("CategoryFk")
+                    b.Property<int>("CategoryNo")
                         .HasColumnType("integer");
 
                     b.Property<string>("Maker")
@@ -62,6 +62,8 @@ namespace EPIMS_API.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.HasKey("ProductNo");
+
+                    b.HasIndex("CategoryNo");
 
                     b.ToTable("Product");
                 });
@@ -91,6 +93,17 @@ namespace EPIMS_API.Migrations
                     b.HasIndex("ProductDataProductNo");
 
                     b.ToTable("ProductDetail");
+                });
+
+            modelBuilder.Entity("EPIMS_API.Domain.Data.ProductData", b =>
+                {
+                    b.HasOne("EPIMS_API.Domain.Data.CategoryData", "CategoryData")
+                        .WithMany()
+                        .HasForeignKey("CategoryNo")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CategoryData");
                 });
 
             modelBuilder.Entity("EPIMS_API.Domain.Data.ProductDetailData", b =>

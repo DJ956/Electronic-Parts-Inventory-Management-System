@@ -28,8 +28,8 @@ namespace EPIMS_API.Domain.Model.Resource
 
         public string Maker { get { return data.Maker; } }
 
-        public int CategoryNo { get { return data.Category.CategoryNo; } }
+        public int CategoryNo { get { return data.CategoryNo; } }
 
-        public string CategoryName { get { return data.Category.CategoryName; } }
+        public string CategoryName { get { return data.CategoryData.CategoryName; } }
     }
 }

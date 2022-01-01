@@ -30,11 +30,17 @@ namespace EPIMS_API.Migrations
                     ModelName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     ShopCode = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     Maker = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
-                    CategoryFk = table.Column<int>(type: "integer", nullable: false)
+                    CategoryNo = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Product", x => x.ProductNo);
+                    table.ForeignKey(
+                        name: "FK_Product_Category_CategoryNo",
+                        column: x => x.CategoryNo,
+                        principalTable: "Category",
+                        principalColumn: "CategoryNo",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,6 +65,11 @@ namespace EPIMS_API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Product_CategoryNo",
+                table: "Product",
+                column: "CategoryNo");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductDetail_ProductDataProductNo",
                 table: "ProductDetail",
                 column: "ProductDataProductNo");
@@ -67,13 +78,13 @@ namespace EPIMS_API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Category");
-
-            migrationBuilder.DropTable(
                 name: "ProductDetail");
 
             migrationBuilder.DropTable(
                 name: "Product");
+
+            migrationBuilder.DropTable(
+                name: "Category");
         }
     }
 }

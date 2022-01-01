@@ -13,6 +13,10 @@ namespace EPIMS_API.Domain.Data
     public class CategoryData
     {
 
+        public CategoryData() { }
+
+        public CategoryData(int categoryNo) { this.CategoryNo = categoryNo; }
+
         /// <summary>
         /// カテゴリー番号
         /// </summary>

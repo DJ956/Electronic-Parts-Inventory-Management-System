@@ -14,7 +14,15 @@ namespace EPIMS_API.Infra
         {
             context.Database.EnsureCreated();
 
-            if (context.ProductDatas.Any()) { return; }
+            InitCategory(context);
+            InitProduct(context);
+
+            context.SaveChanges();
+
+        }
+
+        private static void InitCategory(EPIMSContext context)
+        {
             if (context.CategoryDatas.Any()) { return; }
 
             //カテゴリ
@@ -71,22 +79,25 @@ namespace EPIMS_API.Infra
                 //電源
                 new CategoryData{CategoryName="スイッチングACアダプター"},
                 new CategoryData{CategoryName="DC"},
-
-
-        };
-
+            };
             context.CategoryDatas.AddRange(categoryes);
+        }
 
+
+        private static void InitProduct(EPIMSContext context)
+        {
+
+            if (context.ProductDatas.Any()) { return; }
 
             //製品
             var ProductDatas = new ProductData[]
             {
-                new ProductData{ProductName="PIC16F1827", ModelName="PIC16F1827", Maker="Microchip", CategoryFk = 18},
+                new ProductData{ProductName="PIC16F1827", ModelName="PIC16F1827", Maker="Microchip", CategoryNo=17 },
+                new ProductData{ProductName="PIC16F1938", ModelName="PIC16F1938", Maker="Microchip", CategoryNo=17 },
             };
 
             context.ProductDatas.AddRange(ProductDatas);
-            context.SaveChanges();
-
         }
+
     }
 }

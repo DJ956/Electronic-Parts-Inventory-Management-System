@@ -35,14 +35,8 @@ namespace EPIMS_API.Controllers
             var service = new ProductService(this.productRepository);
             var response = await service.RegistryProcut(request);
 
-            if (response.ReturnCode == 0)
-            {
-                return Ok(response);
-            }
-            else
-            {
-                return BadRequest(response);
-            }
+            if (response.ReturnCode == 0) { return Ok(response); }
+            return BadRequest(response);
         }
 
         /// <summary>
@@ -66,14 +60,24 @@ namespace EPIMS_API.Controllers
         {
             var service = new ProductService(this.productRepository);
             var response = service.GetProduct(productNo);
-            if (response.ReturnCode == 0)
-            {
-                return Ok(response);
-            }
-            else
-            {
-                return BadRequest(response);
-            }
+
+            if (response.ReturnCode == 0) { return Ok(response); }
+            return BadRequest(response);
+        }
+
+        /// <summary>
+        /// カテゴリ番号と一致する製品を取得する
+        /// </summary>
+        /// <param name="categoryNo">カテゴリ番号</param>
+        /// <returns></returns>
+        [HttpGet("categoryNo/{categoryNo}")]
+        public ActionResult<GetProductListResponse> GetProductListByCategory(int categoryNo)
+        {
+            var service = new ProductService(this.productRepository);
+            var response = service.GetProductListByCategory(categoryNo);
+
+            if (response.ReturnCode == 0) { return Ok(response); }
+            return BadRequest(response);
         }
     }
 }

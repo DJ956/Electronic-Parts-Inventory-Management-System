@@ -12,5 +12,6 @@ namespace EPIMS_API.Domain.Repository
         Task<RegistryProductResponse> RegistryProcut(RegistryProductRequest request);
         GetAllProductResponse GetAllProduct();
         GetProductResponse GetProduct(int productNo);
+        GetProductListResponse GetProductListByCategory(int categoryNo);
     }
 }
