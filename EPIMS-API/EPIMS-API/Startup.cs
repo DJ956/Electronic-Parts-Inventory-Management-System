@@ -1,5 +1,7 @@
 using EPIMS_API.Domain.Context;
+using EPIMS_API.Domain.Factory;
 using EPIMS_API.Domain.Repository;
+using EPIMS_API.Infra.Factory;
 using EPIMS_API.Infra.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +16,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace EPIMS_API
@@ -31,8 +34,12 @@ namespace EPIMS_API
         public void ConfigureServices(IServiceCollection services)
         {
             //DI
+            //Repository
             services.AddScoped<ICategoryRepository, CategoryImplRepository>();
             services.AddScoped<IProductRepository, ProductImplRepository>();
+
+            //Factory
+            services.AddScoped<IProductModelFactory, ProductModelFactory>();
 
             //DBê⁄ë±ï∂éöóÒê›íË
             services.AddDbContext<EPIMSContext>(options =>
@@ -55,7 +62,10 @@ namespace EPIMS_API
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
                 options.JsonSerializerOptions.WriteIndented = true;
+                //options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
             });
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EPIMS_API", Version = "v1" });

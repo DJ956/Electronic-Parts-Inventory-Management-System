@@ -3,15 +3,17 @@ using System;
 using EPIMS_API.Domain.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EPIMS_API.Migrations
 {
     [DbContext(typeof(EPIMSContext))]
-    partial class EPIMSContextModelSnapshot : ModelSnapshot
+    [Migration("20220102071943_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,27 +97,6 @@ namespace EPIMS_API.Migrations
                     b.ToTable("ProductDetail");
                 });
 
-            modelBuilder.Entity("EPIMS_API.Domain.Data.ProductImageData", b =>
-                {
-                    b.Property<int>("ImageNo")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("ProductNo")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ImageNo");
-
-                    b.HasIndex("ProductNo");
-
-                    b.ToTable("ProductImage");
-                });
-
             modelBuilder.Entity("EPIMS_API.Domain.Data.ProductData", b =>
                 {
                     b.HasOne("EPIMS_API.Domain.Data.CategoryData", "CategoryData")
@@ -134,22 +115,6 @@ namespace EPIMS_API.Migrations
                         .HasForeignKey("ProductDataProductNo");
 
                     b.Navigation("ProductData");
-                });
-
-            modelBuilder.Entity("EPIMS_API.Domain.Data.ProductImageData", b =>
-                {
-                    b.HasOne("EPIMS_API.Domain.Data.ProductData", "ProductData")
-                        .WithMany("ProductImageList")
-                        .HasForeignKey("ProductNo")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ProductData");
-                });
-
-            modelBuilder.Entity("EPIMS_API.Domain.Data.ProductData", b =>
-                {
-                    b.Navigation("ProductImageList");
                 });
 #pragma warning restore 612, 618
         }

@@ -58,5 +58,10 @@ namespace EPIMS_API.Domain.Data
         [ForeignKey("CategoryNo")]
         public CategoryData CategoryData { get; set; }
 
+        /// <summary>
+        /// 画像パスリスト
+        /// </summary>
+        public List<ProductImageData> ProductImageList { get; set; }
+
     }
 }

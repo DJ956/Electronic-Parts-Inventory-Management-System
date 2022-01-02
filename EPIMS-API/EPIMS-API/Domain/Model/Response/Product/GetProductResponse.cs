@@ -12,9 +12,7 @@ namespace EPIMS_API.Domain.Model.Response.Product
 
         public ProductModel ProductModel { get; set; }
 
-        public GetProductResponse() : base()
-        {
-        }
+        public GetProductResponse() : base() { }
 
         public GetProductResponse(ProductData data)
         {

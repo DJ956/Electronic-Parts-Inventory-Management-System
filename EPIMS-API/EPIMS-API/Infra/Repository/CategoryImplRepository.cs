@@ -29,7 +29,7 @@ namespace EPIMS_API.Infra.Repository
         {
             GetCategoryResponse response = new GetCategoryResponse();
             CategoryData categoryData = this.context.CategoryDatas.Where(c => c.CategoryNo == categoryNo).FirstOrDefault();
-            response.CategoryDate = categoryData;
+            response.CategoryData = categoryData;
 
             return response;
         }

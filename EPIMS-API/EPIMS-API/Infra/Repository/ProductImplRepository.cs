@@ -1,11 +1,9 @@
 ﻿using EPIMS_API.Domain.Context;
 using EPIMS_API.Domain.Data;
+using EPIMS_API.Domain.Factory;
 using EPIMS_API.Domain.Model.Request.Product;
-using EPIMS_API.Domain.Model.Resource;
 using EPIMS_API.Domain.Model.Response.Product;
 using EPIMS_API.Domain.Repository;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,10 +12,13 @@ namespace EPIMS_API.Infra.Repository
     public class ProductImplRepository : IProductRepository
     {
         private readonly EPIMSContext context;
+        private readonly IProductModelFactory factory;
 
-        public ProductImplRepository(EPIMSContext context)
+        public ProductImplRepository(EPIMSContext context,
+            IProductModelFactory factory)
         {
             this.context = context;
+            this.factory = factory;
         }
 
         /// <summary>
@@ -29,9 +30,7 @@ namespace EPIMS_API.Infra.Repository
             GetProductListResponse response = new GetProductListResponse();
             this.context.ProductDatas.ToList().ForEach(p =>
             {
-                var category = this.context.CategoryDatas.Where(c => c.CategoryNo == p.CategoryNo).First();
-                p.CategoryData = category;
-                var model = new ProductModel(p);
+                var model = this.factory.BuildModel(p);
                 response.ProductModelList.Add(model);
             });
 
@@ -54,14 +53,8 @@ namespace EPIMS_API.Infra.Repository
                 response.Message = $"製品が見つかりませんでした。(製品番号={productNo})";
                 return response;
             }
-            CategoryData categoryDate = this.context.CategoryDatas.Where(c => c.CategoryNo == productData.CategoryNo).FirstOrDefault();
-            if (categoryDate != null)
-            {
-                productData.CategoryNo = categoryDate.CategoryNo;
-                productData.CategoryData = categoryDate;
-            }
 
-            response = new GetProductResponse(productData);
+            response.ProductModel = this.factory.BuildModel(productData);
             return response;
         }
 
@@ -118,9 +111,7 @@ namespace EPIMS_API.Infra.Repository
 
             list.ToList().ForEach(p =>
             {
-                var category = this.context.CategoryDatas.Where(c => c.CategoryNo == categoryNo).First();
-                p.CategoryData = category;
-                var model = new ProductModel(p);
+                var model = this.factory.BuildModel(p);
                 response.ProductModelList.Add(model);
             });
 

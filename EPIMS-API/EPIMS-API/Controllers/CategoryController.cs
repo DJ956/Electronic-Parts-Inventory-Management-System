@@ -49,7 +49,7 @@ namespace EPIMS_API.Controllers
             var service = new CategoryService(this.categoryRepository);
 
             GetCategoryResponse response = service.GetCategory(categoryNo);
-            if (response.CategoryDate == null)
+            if (response.CategoryData == null)
             {
                 response.ReturnCode = 1;
                 response.Message = $"カテゴリーが見つかりませんでした。(カテゴリー番号={categoryNo})";

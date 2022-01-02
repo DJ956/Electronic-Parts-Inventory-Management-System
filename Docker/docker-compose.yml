@@ -8,13 +8,12 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       PGPASSWORD: password123
-      POSTGRES_DB: EPIMS
+      POSTGRES_DB: epims
       TZ: "Asia/Tokyo"
     ports:
-      - 5432:5555
+      - 5432:5432
     volumes:
       - postgres:/var/lib/postgres/data
-      - ./db:/docker-entrypoint-initdb.d
 
   pgadmin:
     image: dpage/pgadmin4

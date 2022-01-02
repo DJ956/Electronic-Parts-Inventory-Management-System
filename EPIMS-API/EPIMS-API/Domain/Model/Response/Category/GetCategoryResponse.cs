@@ -9,11 +9,11 @@ namespace EPIMS_API.Domain.Model.Response.Category
     public class GetCategoryResponse : BaseResponse
     {
 
-        public CategoryData CategoryDate { get; set; }
+        public CategoryData CategoryData { get; set; }
 
         public GetCategoryResponse() : base()
         {
-            CategoryDate = new CategoryData();
+            CategoryData = new CategoryData();
         }
     }
 }

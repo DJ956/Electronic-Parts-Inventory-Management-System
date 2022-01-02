@@ -16,6 +16,7 @@ namespace EPIMS_API.Infra
 
             InitCategory(context);
             InitProduct(context);
+            InitProductImage(context);
 
             context.SaveChanges();
 
@@ -97,6 +98,21 @@ namespace EPIMS_API.Infra
             };
 
             context.ProductDatas.AddRange(ProductDatas);
+        }
+
+        private static void InitProductImage(EPIMSContext context)
+        {
+            if (context.ProductImageDatas.Any()) { return; }
+
+            var Images = new ProductImageData[]
+            {
+                new ProductImageData(){ProductNo=1, ImagePath=@"C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\SampleImage\pic16f1827_1.jpg"},
+                new ProductImageData(){ProductNo=1, ImagePath=@"C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\SampleImage\pic16f1827_2.jpg"},
+                new ProductImageData(){ProductNo=2, ImagePath=@"C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\SampleImage\pic16f1938_1.jpg"},
+                new ProductImageData(){ProductNo=2, ImagePath=@"C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\SampleImage\pic16f1938_2.jpg"}
+            };
+
+            context.ProductImageDatas.AddRange(Images);
         }
 
     }
