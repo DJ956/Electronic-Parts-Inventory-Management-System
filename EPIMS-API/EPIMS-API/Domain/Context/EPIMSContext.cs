@@ -40,7 +40,7 @@ namespace EPIMS_API.Domain.Context
                 .HasOne(img => img.ProductData)
                 .WithMany(p => p.ProductImageList)
                 .HasForeignKey(img => img.ProductNo);
-            builder.Entity<ProductDetailData>().ToTable("ProductDetail").HasNoKey();
+            builder.Entity<ProductDetailData>().ToTable("ProductDetail");
         }
     }
 }

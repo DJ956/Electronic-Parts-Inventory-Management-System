@@ -17,6 +17,7 @@ namespace EPIMS_API.Infra
             InitCategory(context);
             InitProduct(context);
             InitProductImage(context);
+            InitProductDetail(context);
 
             context.SaveChanges();
 
@@ -113,6 +114,54 @@ namespace EPIMS_API.Infra
             };
 
             context.ProductImageDatas.AddRange(Images);
+        }
+
+        private static void InitProductDetail(EPIMSContext context)
+        {
+            if (context.ProductDetailDatas.Any()) { return; }
+
+            var Details = new ProductDetailData[]
+            {
+                new ProductDetailData(){ProductNo = 1, CountName="個", Price=190,Url="https://akizukidenshi.com/catalog/g/gI-04430/",
+                    DataSheetPath=@"C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\SampleDataSheet\pic16f1827.pdf",
+                    SpecDesc=@"・シリーズ：PIC16F
+・電源電圧：1.8～5.5V
+・コアサイズ：8bit
+・命令長：14bit
+・クロック：32MHz
+・プログラムメモリ：4kW
+・EEPROM：256B
+・RAM：384B
+・GPIO：16pin
+・ADC：12Ch
+・UART/USART：1Ch
+・I2C：2Ch
+・SPI：2Ch
+・タイマ：5Ch
+・オシレータ：内蔵/外付
+・パッケージ：DIP18", },
+                new ProductDetailData(){ProductNo = 2, CountName="個", Price=220,Url="https://akizukidenshi.com/catalog/g/gI-04357/",
+                    DataSheetPath=@"C:\Users\dexte\Documents\GitHub\Electronic-Parts-Inventory-Management-System\SampleDataSheet\pic16f193X.pdf",
+                    SpecDesc=@"・シリーズ：PIC16F
+・電源電圧：1.8～5.5V
+・コアサイズ：8bit
+・命令長：14bit
+・クロック：32MHz
+・プログラムメモリ：16kW
+・EEPROM：256B
+・RAM：1kB
+・GPIO：25pin
+・ADC：11Ch
+・UART/USART：1Ch
+・I2C：1Ch
+・SPI：1Ch
+・タイマ：5Ch
+・オシレータ：内蔵/外付
+・パッケージ：DIP28", },
+
+            };
+
+            context.ProductDetailDatas.AddRange(Details);
         }
 
     }

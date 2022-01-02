@@ -25,7 +25,7 @@ namespace EPIMS_API.Infra.Repository
         /// 全ての製品を取得する
         /// </summary>
         /// <returns></returns>
-        public GetProductListResponse GetAllProduct()
+        public async Task<GetProductListResponse> GetAllProduct()
         {
             GetProductListResponse response = new GetProductListResponse();
             this.context.ProductDatas.ToList().ForEach(p =>
@@ -42,7 +42,7 @@ namespace EPIMS_API.Infra.Repository
         /// </summary>
         /// <param name="productNo"></param>
         /// <returns></returns>
-        public GetProductResponse GetProduct(int productNo)
+        public async Task<GetProductResponse> GetProduct(int productNo)
         {
             GetProductResponse response = new GetProductResponse();
             ProductData productData = this.context.ProductDatas.Where(p => p.ProductNo == productNo).FirstOrDefault();
@@ -97,19 +97,19 @@ namespace EPIMS_API.Infra.Repository
         /// </summary>
         /// <param name="categoryNo">カテゴリ番号</param>
         /// <returns></returns>
-        public GetProductListResponse GetProductListByCategory(int categoryNo)
+        public async Task<GetProductListResponse> GetProductListByCategory(int categoryNo)
         {
             var response = new GetProductListResponse();
 
-            var list = this.context.ProductDatas.Where(p => p.CategoryNo == categoryNo);
-            if (list == null)
+            var query = this.context.ProductDatas.Where(p => p.CategoryNo == categoryNo);
+            if (query == null)
             {
                 response.ReturnCode = 1;
                 response.Message = $"製品が見つかりませんでした。(カテゴリ番号={categoryNo})";
                 return response;
             }
 
-            list.ToList().ForEach(p =>
+            query.ToList().ForEach(p =>
             {
                 var model = this.factory.BuildModel(p);
                 response.ProductModelList.Add(model);

@@ -10,8 +10,8 @@ namespace EPIMS_API.Domain.Repository
     public interface IProductRepository
     {
         Task<RegistryProductResponse> RegistryProcut(RegistryProductRequest request);
-        GetProductListResponse GetAllProduct();
-        GetProductResponse GetProduct(int productNo);
-        GetProductListResponse GetProductListByCategory(int categoryNo);
+        Task<GetProductListResponse> GetAllProduct();
+        Task<GetProductResponse> GetProduct(int productNo);
+        Task<GetProductListResponse> GetProductListByCategory(int categoryNo);
     }
 }

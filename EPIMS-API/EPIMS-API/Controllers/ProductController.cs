@@ -17,11 +17,11 @@ namespace EPIMS_API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IProductRepository productRepository;
+        private readonly IProductRepository repository;
 
-        public ProductController(IProductRepository productRepository) : base()
+        public ProductController(IProductRepository repository) : base()
         {
-            this.productRepository = productRepository;
+            this.repository = repository;
         }
 
         /// <summary>
@@ -32,9 +32,8 @@ namespace EPIMS_API.Controllers
         [HttpPost("registry")]
         public async Task<ActionResult<RegistryProductResponse>> RegistryProcut(RegistryProductRequest request)
         {
-            var service = new ProductService(this.productRepository);
+            var service = new ProductService(this.repository);
             var response = await service.RegistryProcut(request);
-
             if (response.ReturnCode == 0) { return Ok(response); }
             return BadRequest(response);
         }
@@ -44,10 +43,12 @@ namespace EPIMS_API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("all")]
-        public ActionResult<GetProductListResponse> GetAllProduct()
+        public async Task<ActionResult<GetProductListResponse>> GetAllProduct()
         {
-            var service = new ProductService(this.productRepository);
-            return Ok(service.GetAllProduct());
+            var service = new ProductService(this.repository);
+            var response = await service.GetAllProduct();
+            if (response.ReturnCode == 0) { return Ok(response); }
+            return BadRequest(response);
         }
 
         /// <summary>
@@ -56,11 +57,10 @@ namespace EPIMS_API.Controllers
         /// <param name="productNo"></param>
         /// <returns></returns>
         [HttpGet("{productNo}")]
-        public ActionResult<GetProductResponse> GetProduct(int productNo)
+        public async Task<ActionResult<GetProductResponse>> GetProduct(int productNo)
         {
-            var service = new ProductService(this.productRepository);
-            var response = service.GetProduct(productNo);
-
+            var service = new ProductService(this.repository);
+            var response = await service.GetProduct(productNo);
             if (response.ReturnCode == 0) { return Ok(response); }
             return BadRequest(response);
         }
@@ -71,11 +71,10 @@ namespace EPIMS_API.Controllers
         /// <param name="categoryNo">カテゴリ番号</param>
         /// <returns></returns>
         [HttpGet("categoryNo/{categoryNo}")]
-        public ActionResult<GetProductListResponse> GetProductListByCategory(int categoryNo)
+        public async Task<ActionResult<GetProductListResponse>> GetProductListByCategory(int categoryNo)
         {
-            var service = new ProductService(this.productRepository);
-            var response = service.GetProductListByCategory(categoryNo);
-
+            var service = new ProductService(this.repository);
+            var response = await service.GetProductListByCategory(categoryNo);
             if (response.ReturnCode == 0) { return Ok(response); }
             return BadRequest(response);
         }

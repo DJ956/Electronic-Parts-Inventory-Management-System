@@ -4,6 +4,7 @@ using EPIMS_API.Domain.Factory;
 using EPIMS_API.Domain.Model.Resource;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace EPIMS_API.Infra.Factory
 {
@@ -25,14 +26,14 @@ namespace EPIMS_API.Infra.Factory
             this.context.Entry(data).Reference(p => p.CategoryData).Load();
             //画像
             this.context.Entry(data).Collection(p => p.ProductImageList).Load();
-            data.ProductImageList.ForEach(data =>
+            data.ProductImageList.ForEach(async data =>
             {
                 if (File.Exists(data.ImagePath) == false) { return; }
 
                 using (var memory = new MemoryStream())
                 using (var fs = new FileStream(data.ImagePath, FileMode.Open))
                 {
-                    fs.CopyTo(memory);
+                    await fs.CopyToAsync(memory);
                     data.ImagePath = Convert.ToBase64String(memory.ToArray());
                 }
             });

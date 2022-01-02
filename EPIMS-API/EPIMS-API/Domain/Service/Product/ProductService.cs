@@ -31,7 +31,7 @@ namespace EPIMS_API.Domain.Service.Product
         /// 製品をすべて取得する
         /// </summary>
         /// <returns></returns>
-        public GetProductListResponse GetAllProduct()
+        public Task<GetProductListResponse> GetAllProduct()
         {
             return this.repository.GetAllProduct();
         }
@@ -41,7 +41,7 @@ namespace EPIMS_API.Domain.Service.Product
         /// </summary>
         /// <param name="productNo">製品番号</param>
         /// <returns></returns>
-        public GetProductResponse GetProduct(int productNo)
+        public Task<GetProductResponse> GetProduct(int productNo)
         {
             return this.repository.GetProduct(productNo);
         }
@@ -51,7 +51,7 @@ namespace EPIMS_API.Domain.Service.Product
         /// </summary>
         /// <param name="categoryNo">カテゴリ番号</param>
         /// <returns></returns>
-        public GetProductListResponse GetProductListByCategory(int categoryNo)
+        public Task<GetProductListResponse> GetProductListByCategory(int categoryNo)
         {
             return this.repository.GetProductListByCategory(categoryNo);
         }

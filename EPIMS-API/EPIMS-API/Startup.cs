@@ -37,9 +37,11 @@ namespace EPIMS_API
             //Repository
             services.AddScoped<ICategoryRepository, CategoryImplRepository>();
             services.AddScoped<IProductRepository, ProductImplRepository>();
+            services.AddScoped<IProductDetailRepository, ProductDetailImplRepository>();
 
             //Factory
             services.AddScoped<IProductModelFactory, ProductModelFactory>();
+            services.AddScoped<IProductDetailModelFactory, ProductDetailModelFactory>();
 
             //DBê⁄ë±ï∂éöóÒê›íË
             services.AddDbContext<EPIMSContext>(options =>
@@ -62,7 +64,6 @@ namespace EPIMS_API
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
                 options.JsonSerializerOptions.WriteIndented = true;
-                //options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
             });
 
 
