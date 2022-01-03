@@ -18,11 +18,17 @@ namespace EPIMS_API.Infra
             InitProduct(context);
             InitProductImage(context);
             InitProductDetail(context);
+            InitCodeMaster(context);
+            InitInventory(context);
 
             context.SaveChanges();
 
         }
 
+        /// <summary>
+        /// カテゴリー初期化
+        /// </summary>
+        /// <param name="context"></param>
         private static void InitCategory(EPIMSContext context)
         {
             if (context.CategoryDatas.Any()) { return; }
@@ -85,7 +91,10 @@ namespace EPIMS_API.Infra
             context.CategoryDatas.AddRange(categoryes);
         }
 
-
+        /// <summary>
+        /// 製品追加
+        /// </summary>
+        /// <param name="context"></param>
         private static void InitProduct(EPIMSContext context)
         {
 
@@ -101,6 +110,10 @@ namespace EPIMS_API.Infra
             context.ProductDatas.AddRange(ProductDatas);
         }
 
+        /// <summary>
+        /// 製品画像追加
+        /// </summary>
+        /// <param name="context"></param>
         private static void InitProductImage(EPIMSContext context)
         {
             if (context.ProductImageDatas.Any()) { return; }
@@ -116,6 +129,10 @@ namespace EPIMS_API.Infra
             context.ProductImageDatas.AddRange(Images);
         }
 
+        /// <summary>
+        /// 製品詳細初期化
+        /// </summary>
+        /// <param name="context"></param>
         private static void InitProductDetail(EPIMSContext context)
         {
             if (context.ProductDetailDatas.Any()) { return; }
@@ -164,5 +181,41 @@ namespace EPIMS_API.Infra
             context.ProductDetailDatas.AddRange(Details);
         }
 
+        /// <summary>
+        /// コードマスタ初期化
+        /// </summary>
+        /// <param name="context"></param>
+        private static void InitCodeMaster(EPIMSContext context)
+        {
+            if (context.CodeMasters.Any()) { return; }
+
+            var codes = new CodeMasterData[]
+            {
+                new CodeMasterData(){ID="IVNT", Desc="在庫管理スタータス", Code="001", CodeName="注文中"},
+                new CodeMasterData(){ID="IVNT", Desc="在庫管理スタータス", Code="002", CodeName="入庫済"},
+                new CodeMasterData(){ID="IVNT", Desc="在庫管理スタータス", Code="003", CodeName="引当中"},
+                new CodeMasterData(){ID="IVNT", Desc="在庫管理スタータス", Code="004", CodeName="出庫済"},
+                new CodeMasterData(){ID="IVNT", Desc="在庫管理スタータス", Code="005", CodeName="破棄・破損"},
+            };
+
+            context.CodeMasters.AddRange(codes);
+        }
+
+        /// <summary>
+        /// 在庫管理初期化
+        /// </summary>
+        /// <param name="context"></param>
+        private static void InitInventory(EPIMSContext context)
+        {
+            if (context.InventoryDatas.Any()) { return; }
+
+            var Inventoryes = new InventoryData[]
+            {
+                new InventoryData(){ProductNo=1, StockQuantity=10, DeliveredDate=DateTime.Today, Location="移動式工作棚", StatusCode="002"},
+                new InventoryData(){ProductNo=2, StockQuantity=8, DeliveredDate=DateTime.Today, Location="移動式工作棚", StatusCode="002"},
+            };
+
+            context.InventoryDatas.AddRange(Inventoryes);
+        }
     }
 }

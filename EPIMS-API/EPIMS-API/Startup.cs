@@ -38,10 +38,13 @@ namespace EPIMS_API
             services.AddScoped<ICategoryRepository, CategoryImplRepository>();
             services.AddScoped<IProductRepository, ProductImplRepository>();
             services.AddScoped<IProductDetailRepository, ProductDetailImplRepository>();
+            services.AddScoped<ICodeMasterRepository, CodeMasterImplRepository>();
+            services.AddScoped<IInventoryRepository, InventoryImplRepository>();
 
             //Factory
             services.AddScoped<IProductModelFactory, ProductModelFactory>();
             services.AddScoped<IProductDetailModelFactory, ProductDetailModelFactory>();
+            services.AddScoped<IInventoryModelFactory, InventoryModelFactory>();
 
             //DBê⁄ë±ï∂éöóÒê›íË
             services.AddDbContext<EPIMSContext>(options =>

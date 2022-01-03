@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4oOy0TJFQkSfD3WuOhjoQ/rxglAJpXjM3g0Ok5pjC1EO//jFelwHOWsdUi7Mnsm5GMwKfOhpJa9wpMHG8sRELg==",
+  "dgSpecHash": "LvccvFqwM0Eq/8xphivvvHcDLMQRxzXXS/uoZkHtQGuoDpmy8gLFWqNS7sF99YwbNiHS8RpzssteP4ZlwyfXjw==",
   "success": true,
   "projectFilePath": "C:\\Users\\dexte\\Documents\\GitHub\\Electronic-Parts-Inventory-Management-System\\EPIMS-API\\EPIMS-API\\EPIMS-API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\dexte\\.nuget\\packages\\dataannotationsextensions\\5.0.1.27\\dataannotationsextensions.5.0.1.27.nupkg.sha512",
     "C:\\Users\\dexte\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dexte\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\5.0.13\\microsoft.aspnetcore.diagnostics.entityframeworkcore.5.0.13.nupkg.sha512",
     "C:\\Users\\dexte\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -41,5 +42,16 @@
     "C:\\Users\\dexte\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "C:\\Users\\dexte\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "パッケージ 'DataAnnotationsExtensions 5.0.1.27' はプロジェクトのターゲット フレームワーク 'net5.0' ではなく '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' を使用して復元されました。このパッケージは、使用しているプロジェクトとの完全な互換性がない可能性があります。",
+      "libraryId": "DataAnnotationsExtensions",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

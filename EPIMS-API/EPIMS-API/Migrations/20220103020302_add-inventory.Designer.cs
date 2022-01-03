@@ -3,15 +3,17 @@ using System;
 using EPIMS_API.Domain.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EPIMS_API.Migrations
 {
     [DbContext(typeof(EPIMSContext))]
-    partial class EPIMSContextModelSnapshot : ModelSnapshot
+    [Migration("20220103020302_add-inventory")]
+    partial class addinventory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

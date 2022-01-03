@@ -25,12 +25,17 @@ namespace EPIMS_API.Domain.Context
         /// カテゴリー
         /// </summary>
         public DbSet<CategoryData> CategoryDatas { get; set; }
+        /// <summary>
+        /// コードマスター
+        /// </summary>
+        public DbSet<CodeMasterData> CodeMasters { get; set; }
+        /// <summary>
+        /// 在庫管理
+        /// </summary>
+        public DbSet<InventoryData> InventoryDatas { get; set; }
 
 
-        public EPIMSContext(DbContextOptions<EPIMSContext> options) : base(options)
-        {
-
-        }
+        public EPIMSContext(DbContextOptions<EPIMSContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -41,6 +46,8 @@ namespace EPIMS_API.Domain.Context
                 .WithMany(p => p.ProductImageList)
                 .HasForeignKey(img => img.ProductNo);
             builder.Entity<ProductDetailData>().ToTable("ProductDetail");
+            builder.Entity<CodeMasterData>().ToTable("CodeMaster");
+            builder.Entity<InventoryData>().ToTable("Inventory");
         }
     }
 }
